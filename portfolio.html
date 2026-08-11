@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio — Zenith Creative</title>
+<meta name="description" content="Artes esportivas e corporativas feitas pela Zenith Creative.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --asfalto:#0B0B0C;
+  --concreto:#141517;
+  --linha:#26282B;
+  --giz:#E8E5E0;
+  --fumaca:#8E8B86;
+  --display:'Anton',Impact,sans-serif;
+  --corpo:'Archivo',system-ui,sans-serif;
+  --gutter:clamp(20px,5vw,72px);
+  --maxw:1240px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--asfalto);color:var(--giz);font-family:var(--corpo);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--giz);outline-offset:3px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--fumaca)}
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,11,12,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--linha)}
+.nav__in{display:flex;align-items:center;gap:24px;height:68px}
+.nav__logo img{height:26px;width:auto}
+.nav__links{display:none;gap:28px;margin-left:auto;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.nav__links a{color:var(--fumaca);transition:color .2s}
+.nav__links a:hover,.nav__links a[aria-current]{color:var(--giz)}
+.nav__cta{margin-left:auto}
+@media(min-width:900px){.nav__links{display:flex}.nav__cta{margin-left:0}}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:13px 20px;border:1px solid var(--giz);transition:background .2s,color .2s;cursor:pointer;font-family:var(--corpo)}
+.btn--solid{background:var(--giz);color:var(--asfalto)}
+.btn--solid:hover{background:transparent;color:var(--giz)}
+.btn--ghost{background:transparent;color:var(--giz);border-color:var(--linha)}
+.btn--ghost:hover{border-color:var(--giz)}
+.btn--sm{padding:10px 16px;font-size:11px}
+.btn svg{width:14px;height:14px;flex:none}
+
+/* cabeçalho da página */
+.topo{padding:clamp(44px,7vw,88px) 0 clamp(26px,4vw,44px)}
+.topo h1{font-family:var(--display);font-size:clamp(40px,7.4vw,84px);line-height:.94;text-transform:uppercase;margin:12px 0 18px}
+.topo p{color:var(--fumaca);max-width:50ch}
+
+/* filtros */
+.filtros{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:clamp(24px,4vw,40px);border-bottom:1px solid var(--linha)}
+.filtro{
+  background:transparent;color:var(--fumaca);border:1px solid var(--linha);
+  font-family:var(--corpo);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  padding:10px 16px;cursor:pointer;transition:color .2s,border-color .2s,background .2s;
+}
+.filtro:hover{color:var(--giz);border-color:var(--giz)}
+.filtro[aria-pressed="true"]{background:var(--giz);color:var(--asfalto);border-color:var(--giz)}
+.contagem{margin-left:auto;align-self:center;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--fumaca)}
+
+/* grade */
+.galeria{display:grid;gap:clamp(14px,2.2vw,26px);grid-template-columns:1fr;padding:clamp(30px,5vw,54px) 0 clamp(60px,9vw,110px)}
+@media(min-width:640px){.galeria{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.galeria{grid-template-columns:repeat(3,1fr)}}
+.peca{position:relative;background:var(--concreto);border:1px solid var(--linha);overflow:hidden;text-align:left;padding:0;cursor:zoom-in;font-family:var(--corpo);color:var(--giz);width:100%}
+.peca__midia{position:relative;aspect-ratio:4/5;overflow:hidden}
+.peca__midia img,.peca__midia video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.peca:hover .peca__midia img,.peca:hover .peca__midia video{transform:scale(1.035)}
+.peca__pe{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:14px 16px;border-top:1px solid var(--linha)}
+.peca__nome{font-size:13px;font-weight:600}
+.peca__tipo{font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fumaca)}
+.selo{position:absolute;top:12px;left:12px;z-index:2;background:var(--asfalto);border:1px solid var(--linha);font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:5px 9px}
+.vazio{grid-column:1/-1;padding:60px 0;text-align:center;color:var(--fumaca)}
+
+/* lightbox */
+.lupa{position:fixed;inset:0;z-index:100;background:rgba(6,6,7,.94);display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,56px)}
+.lupa[open],.lupa.aberta{display:flex}
+.lupa__caixa{max-width:min(920px,100%);max-height:100%;display:flex;flex-direction:column;gap:14px}
+.lupa__midia{max-height:78vh;width:auto;margin:0 auto;border:1px solid var(--linha)}
+.lupa__legenda{display:flex;justify-content:space-between;gap:16px;font-size:12px;letter-spacing:.06em;color:var(--fumaca)}
+.lupa__fechar{position:absolute;top:18px;right:18px;background:transparent;border:1px solid var(--linha);color:var(--giz);font-family:var(--corpo);font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:9px 14px;cursor:pointer}
+.lupa__fechar:hover{border-color:var(--giz)}
+
+/* chamada final */
+.chamada{border-top:1px solid var(--linha);padding:clamp(50px,8vw,90px) 0;text-align:center}
+.chamada h2{font-family:var(--display);font-size:clamp(28px,4.6vw,52px);text-transform:uppercase;line-height:.98;margin-bottom:16px}
+.chamada p{color:var(--fumaca);max-width:42ch;margin:0 auto 28px}
+
+.rodape{border-top:1px solid var(--linha);padding:40px 0}
+.rodape__in{display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between}
+.rodape img{height:22px;width:auto;opacity:.75}
+.rodape small{color:var(--fumaca);font-size:12px;letter-spacing:.06em}
+.rodape a{color:var(--fumaca);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.rodape a:hover{color:var(--giz)}
+
+.rev{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .85s cubic-bezier(.2,.8,.2,1)}
+.rev.on{opacity:1;transform:none;animation:esguicho .85s cubic-bezier(.2,.8,.2,1) both}
+@keyframes esguicho{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){
+  .rev{opacity:1;transform:none;transition:none}
+  .rev.on{animation:none}
+  .peca__midia img,.peca__midia video{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="index.html" aria-label="Zenith Creative — início">
+      <img src="assets/logo-zenith.png" alt="Zenith Creative">
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="index.html#trabalhos">Trabalhos</a>
+      <a href="index.html#servicos">O que eu faço</a>
+      <a href="index.html#processo">Como funciona</a>
+      <a href="portfolio.html" aria-current="page">Portfólio</a>
+    </nav>
+    <a class="btn btn--solid btn--sm nav__cta" href="https://wa.me/5519982375594?text=Oi%2C%20Ingrid!%20Vim%20pelo%20portf%C3%B3lio%20e%20quero%20pedir%20uma%20arte." target="_blank" rel="noopener">Pedir arte</a>
+  </div>
+</header>
+
+<main>
+  <section class="wrap topo">
+    <p class="eyebrow">Portfólio</p>
+    <h1>Tudo que<br>já foi pra rua</h1>
+    <p>Clique em qualquer peça pra ver em tamanho grande. Filtre pelo tipo de trabalho que você precisa.</p>
+  </section>
+
+  <div class="wrap">
+    <div class="filtros" role="group" aria-label="Filtrar trabalhos">
+      <button class="filtro" data-filtro="todos" aria-pressed="true">Todos</button>
+      <button class="filtro" data-filtro="esportivo" aria-pressed="false">Esportivo</button>
+      <button class="filtro" data-filtro="corporativo" aria-pressed="false">Corporativo</button>
+      <button class="filtro" data-filtro="motion" aria-pressed="false">Motion</button>
+      <span class="contagem" id="contagem"></span>
+    </div>
+
+    <div class="galeria" id="galeria" aria-live="polite"></div>
+  </div>
+
+  <section class="chamada">
+    <div class="wrap">
+      <h2>Gostou?<br>A próxima pode ser a sua</h2>
+      <p>Me chama no WhatsApp com o que você precisa e pra quando. Respondo com prazo e valor.</p>
+      <a class="btn btn--solid" href="https://wa.me/5519982375594?text=Oi%2C%20Ingrid!%20Vim%20pelo%20portf%C3%B3lio%20e%20quero%20pedir%20uma%20arte." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.4A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.5-.3.3c-.1.1-.2.3 0 .5.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.2.1.4.1.5-.1l.8-.9c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.2.1.7-.1 1.2Z"/></svg>
+        Pedir minha arte
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap rodape__in">
+    <img src="assets/logo-zenith.png" alt="Zenith Creative">
+    <small>© 2026 Zenith Creative · Design esportivo e corporativo</small>
+    <a href="https://www.instagram.com/zenith.creative_/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<div class="lupa" id="lupa" role="dialog" aria-modal="true" aria-label="Trabalho ampliado">
+  <button class="lupa__fechar" id="fechar">Fechar (Esc)</button>
+  <div class="lupa__caixa" id="lupaCaixa"></div>
+</div>
+
+<script>
+/* =========================================================
+   TRABALHOS
+   Pra adicionar uma arte nova: copie um bloco abaixo e troque
+   os dados. Coloque o arquivo dentro da pasta /assets.
+   tipo:  "esportivo" | "corporativo"
+   video: true  -> use "capa" com um .jpg do primeiro frame
+   ========================================================= */
+var TRABALHOS = [
+  {
+    nome: "Elenco 2026 · Zagueiros",
+    cliente: "Amador Nova Odessa",
+    tipo: "esportivo",
+    video: false,
+    arquivo: "assets/trabalho-elenco-zagueiros.png"
+  },
+  {
+    nome: "Liverpool Eternos Amigos",
+    cliente: "Apresentação de elenco",
+    tipo: "esportivo",
+    video: true,
+    arquivo: "assets/trabalho-liverpool.mp4",
+    capa: "assets/capa-liverpool.jpg"
+  },
+  {
+    nome: "Matiensen · Dia de final",
+    cliente: "Copa Metropolitana Sub-20",
+    tipo: "esportivo",
+    video: true,
+    arquivo: "assets/trabalho-matiensen.mp4",
+    capa: "assets/capa-matiensen.jpg"
+  },
+  {
+    nome: "Zenith Creative",
+    cliente: "Post de perfil",
+    tipo: "corporativo",
+    video: false,
+    arquivo: "assets/trabalho-pedido-arte.png"
+  }
+];
+
+var galeria = document.getElementById('galeria');
+var contagem = document.getElementById('contagem');
+var lupa = document.getElementById('lupa');
+var lupaCaixa = document.getElementById('lupaCaixa');
+var ativo = 'todos';
+
+function combina(t){
+  if(ativo === 'todos') return true;
+  if(ativo === 'motion') return t.video === true;
+  return t.tipo === ativo;
+}
+
+function desenha(){
+  var lista = TRABALHOS.filter(combina);
+  galeria.innerHTML = '';
+
+  if(!lista.length){
+    galeria.innerHTML = '<p class="vazio">Nada por aqui ainda. Escolha outro filtro.</p>';
+    contagem.textContent = '0 peças';
+    return;
+  }
+
+  lista.forEach(function(t, i){
+    var midia = t.video
+      ? '<span class="selo">Motion</span><video src="'+t.arquivo+'" poster="'+(t.capa||'')+'" autoplay muted loop playsinline preload="metadata"></video>'
+      : '<img src="'+t.arquivo+'" alt="'+t.nome+' — '+t.cliente+'" loading="lazy">';
+
+    var card = document.createElement('button');
+    card.className = 'peca rev';
+    card.type = 'button';
+    card.setAttribute('aria-label', 'Ampliar: ' + t.nome);
+    card.innerHTML =
+      '<div class="peca__midia">'+midia+'</div>'+
+      '<div class="peca__pe"><span class="peca__nome">'+t.nome+'</span>'+
+      '<span class="peca__tipo">'+(t.video ? 'Motion' : t.tipo)+'</span></div>';
+    card.addEventListener('click', function(){ abre(t); });
+    galeria.appendChild(card);
+    setTimeout(function(){ card.classList.add('on'); }, 60 + i * 70);
+  });
+
+  contagem.textContent = lista.length + (lista.length === 1 ? ' peça' : ' peças');
+}
+
+function abre(t){
+  lupaCaixa.innerHTML = (t.video
+      ? '<video class="lupa__midia" src="'+t.arquivo+'" poster="'+(t.capa||'')+'" autoplay muted loop playsinline controls></video>'
+      : '<img class="lupa__midia" src="'+t.arquivo+'" alt="'+t.nome+'">')
+    + '<div class="lupa__legenda"><span>'+t.nome+'</span><span>'+t.cliente+'</span></div>';
+  lupa.classList.add('aberta');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('fechar').focus();
+}
+
+function fecha(){
+  lupa.classList.remove('aberta');
+  lupaCaixa.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('fechar').addEventListener('click', fecha);
+lupa.addEventListener('click', function(e){ if(e.target === lupa) fecha(); });
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') fecha(); });
+
+document.querySelectorAll('.filtro').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.filtro').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    ativo = b.dataset.filtro;
+    desenha();
+  });
+});
+
+desenha();
+</script>
+</body>
+</html>
